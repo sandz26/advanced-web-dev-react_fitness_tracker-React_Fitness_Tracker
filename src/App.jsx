@@ -1,22 +1,32 @@
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { Route, Routes } from 'react-router'
+import Navbar from './components/Navigation/Navbar'
+import Footer from './components/common/Footer'
+import ExerciseDetail from './components/Exercise/ExerciseDetail'
+import ExercisesPage from './pages/ExercisesPage'
+import HistoryPage from './pages/HistoryPage'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import ProgressPage from './pages/ProgressPage'
+import WorkoutPlannerPage from './pages/WorkoutPlannerPage'
 import './App.css'
 
 function App() {
- 
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-      
-      </section>
-    </>
+    <div className="app">
+      <Navbar />
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/exercises" element={<ExercisesPage />} />
+          <Route path="/exercises/:id" element={<ExerciseDetail />} />
+          <Route path="/workout-planner" element={<WorkoutPlannerPage />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/progress" element={<ProgressPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   )
 }
 
