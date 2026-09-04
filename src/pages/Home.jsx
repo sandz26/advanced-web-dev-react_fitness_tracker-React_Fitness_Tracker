@@ -1,9 +1,15 @@
 import { Link } from 'react-router'
 import Header from '../components/common/Header'
-import Card from '../components/UI/Card'
 import AudioPlayer from '../components/Media/AudioPlayer'
+import Card from '../components/UI/Card'
+import { exercisesData } from '../data/exercisesData'
+import { countPlanExercises } from '../utils/helpers'
 
-function Home() {
+function Home({ workoutPlan = {}, workoutHistory = [] }) {
+  // Strength picks are transformed before they reach the featured cards.
+  const featured = exercisesData.filter((exercise) => exercise.category === 'strength').slice(0, 3)
+  const plannedCount = countPlanExercises(workoutPlan)
+
   return (
     <section className="page">
       <p className="page-kicker">Fitness Tracker</p>
@@ -11,15 +17,31 @@ function Home() {
         title="Plan workouts. Log progress. Stay consistent."
         subtitle="Browse exercises, build a weekly plan, and track your fitness journey."
       />
-      <Card title="Start here">
-        <p>Tomorrow we will wire search, filters, planner persistence, and workout history.</p>
+      <Card title="Your snapshot">
+        <p>
+          {workoutHistory.length} workout{workoutHistory.length === 1 ? '' : 's'} completed
+        </p>
+        <p>
+          {plannedCount} exercise{plannedCount === 1 ? '' : 's'} in this week's plan
+        </p>
         <p>
           <Link to="/exercises">Browse exercises</Link>
           {' · '}
           <Link to="/workout-planner">Open planner</Link>
         </p>
       </Card>
-      <AudioPlayer title="Motivational track (placeholder)" />
+      <div className="feature-grid">
+        {featured.map((exercise) => (
+          <Card key={exercise.id} title={exercise.name}>
+            <p>{exercise.caloriesBurn} cal · {exercise.difficulty}</p>
+            <Link to={`/exercises/${exercise.id}`}>View {exercise.name}</Link>
+          </Card>
+        ))}
+      </div>
+      <AudioPlayer
+        title="Motivational warmup"
+        description="A short tone to start the session. Replace with a full track later if you like."
+      />
     </section>
   )
 }

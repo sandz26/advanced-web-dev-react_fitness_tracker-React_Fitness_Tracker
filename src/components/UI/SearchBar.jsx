@@ -1,16 +1,47 @@
+import { useState } from 'react'
 import styles from './UI.module.css'
 
-function SearchBar({ value, onChange, placeholder = 'Search exercises...' }) {
+const SearchBar = ({
+  value = '',
+  onChange,
+  onSubmit,
+  placeholder = 'Search exercises...',
+}) => {
+  const [focused, setFocused] = useState(false)
+
+  // Lift the typed query to the parent so sibling filters can use the same text.
+  const handleChange = (event) => {
+    onChange?.(event.target.value, event)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    onSubmit?.(value, event)
+  }
+
   return (
-    <label className={styles.search}>
-      <span className={styles.srOnly}>Search</span>
-      <input
-        type="search"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </label>
+    <form
+      className={`${styles.search} ${focused ? styles.searchFocused : ''}`}
+      onSubmit={handleSubmit}
+    >
+      <label>
+        <span className={styles.srOnly}>Search</span>
+        <input
+          type="search"
+          value={value}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              event.currentTarget.blur()
+            }
+          }}
+        />
+      </label>
+      <button type="submit">Search</button>
+    </form>
   )
 }
 

@@ -1,7 +1,6 @@
+import { DAYS } from '../../data/constants'
 import DayCard from './DayCard'
 import styles from './WorkoutPlanner.module.css'
-
-const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 function WorkoutPlanner({ plan = {}, onRemoveExercise, onClearDay }) {
   return (

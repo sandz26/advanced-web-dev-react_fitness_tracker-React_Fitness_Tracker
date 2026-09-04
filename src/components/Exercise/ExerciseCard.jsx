@@ -1,25 +1,63 @@
-import Card from '../UI/Card'
+import PropTypes from 'prop-types'
 import Badge from '../UI/Badge'
+import Button from '../UI/Button'
+import Card from '../UI/Card'
+import { formatDuration } from '../../utils/helpers'
 import styles from './Exercise.module.css'
 
-function ExerciseCard({ exercise, onSelect }) {
+const ExerciseCard = ({
+  exercise,
+  onSelect,
+  onAdd,
+  isInPlan = false,
+}) => {
   if (!exercise) {
     return null
   }
 
   return (
-    <Card title={exercise.name}>
+    <Card title={exercise.name} selected={isInPlan}>
+      <img src={exercise.image} alt={exercise.name} className={styles.thumb} />
       <div className={styles.cardMeta}>
         <Badge label={exercise.category} />
-        <Badge label={exercise.difficulty} tone="neutral" />
+        <Badge label={exercise.difficulty} />
       </div>
-      {onSelect ? (
-        <button type="button" onClick={() => onSelect(exercise)}>
-          View details
-        </button>
-      ) : null}
+      <p>
+        Duration: {formatDuration(exercise.duration)} · {exercise.sets} sets × {exercise.reps} reps
+      </p>
+      <p>{exercise.caloriesBurn} cal</p>
+      <div className={styles.cardActions}>
+        {onSelect ? (
+          <Button variant="secondary" onClick={() => onSelect(exercise)}>
+            View details
+          </Button>
+        ) : null}
+        {onAdd ? (
+          <Button onClick={() => onAdd(exercise)} disabled={isInPlan}>
+            {isInPlan ? 'In plan' : 'Add to Workout Plan'}
+          </Button>
+        ) : null}
+      </div>
     </Card>
   )
+}
+
+ExerciseCard.propTypes = {
+  exercise: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    muscleGroups: PropTypes.arrayOf(PropTypes.string),
+    difficulty: PropTypes.string,
+    duration: PropTypes.number,
+    sets: PropTypes.number,
+    reps: PropTypes.number,
+    image: PropTypes.string,
+    caloriesBurn: PropTypes.number,
+  }).isRequired,
+  onSelect: PropTypes.func,
+  onAdd: PropTypes.func,
+  isInPlan: PropTypes.bool,
 }
 
 export default ExerciseCard

@@ -3,6 +3,7 @@ import Header from '../components/common/Header'
 import Button from '../components/UI/Button'
 
 function NotFound() {
+  // Programmatic navigation back to home instead of a dead-end 404.
   const navigate = useNavigate()
 
   return (

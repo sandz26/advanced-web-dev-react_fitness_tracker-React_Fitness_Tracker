@@ -1,15 +1,18 @@
+import PropTypes from 'prop-types'
+import Button from '../UI/Button'
 import Card from '../UI/Card'
 import styles from './WorkoutPlanner.module.css'
 
-function DayCard({ day, exercises = [], onRemoveExercise, onClearDay }) {
+const DayCard = ({ day, exercises = [], onRemoveExercise, onClearDay }) => {
+  // Selected styling tells the user which days already have work assigned.
+  const hasExercises = exercises.length > 0
+
   return (
-    <Card title={day}>
-      {exercises.length === 0 ? (
-        <p>No exercises planned</p>
-      ) : (
+    <Card title={day} selected={hasExercises}>
+      {hasExercises ? (
         <ul className={styles.dayList}>
           {exercises.map((exercise) => (
-            <li key={exercise.id}>
+            <li key={`${day}-${exercise.id}`}>
               <span>{exercise.name}</span>
               {onRemoveExercise ? (
                 <button type="button" onClick={() => onRemoveExercise(day, exercise.id)}>
@@ -19,14 +22,28 @@ function DayCard({ day, exercises = [], onRemoveExercise, onClearDay }) {
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No exercises planned</p>
       )}
-      {onClearDay ? (
-        <button type="button" onClick={() => onClearDay(day)}>
+      {hasExercises && onClearDay ? (
+        <Button variant="danger" onClick={() => onClearDay(day)}>
           Clear day
-        </button>
+        </Button>
       ) : null}
     </Card>
   )
+}
+
+DayCard.propTypes = {
+  day: PropTypes.string.isRequired,
+  exercises: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
+  onRemoveExercise: PropTypes.func,
+  onClearDay: PropTypes.func,
 }
 
 export default DayCard

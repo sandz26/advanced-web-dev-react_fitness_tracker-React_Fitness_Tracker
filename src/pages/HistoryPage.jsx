@@ -1,14 +1,14 @@
 import Header from '../components/common/Header'
 import WorkoutLog from '../components/WorkoutLog/WorkoutLog'
 
-function HistoryPage() {
+function HistoryPage({ workoutHistory = [], onLogWorkout }) {
   return (
     <section className="page">
       <Header
         title="Workout History"
-        subtitle="Completed workouts will appear here after logging is implemented."
+        subtitle="Log completed work with date, sets, reps, and weight."
       />
-      <WorkoutLog />
+      <WorkoutLog entries={workoutHistory} onSubmit={onLogWorkout} />
     </section>
   )
 }

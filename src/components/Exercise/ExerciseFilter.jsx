@@ -1,52 +1,64 @@
+import { CATEGORIES, DIFFICULTIES, MUSCLE_GROUPS } from '../../data/constants'
+import { titleCase } from '../../utils/helpers'
 import styles from './Exercise.module.css'
 
-function ExerciseFilter({
+const ExerciseFilter = ({
   category = 'all',
   muscleGroup = 'all',
   difficulty = 'all',
+  sortBy = 'name',
   onCategoryChange,
   onMuscleGroupChange,
   onDifficultyChange,
+  onSortChange,
   onClear,
-}) {
-  return (
-    <form className={styles.filters} onSubmit={(event) => event.preventDefault()}>
-      <label>
-        Category
-        <select value={category} onChange={onCategoryChange}>
-          <option value="all">All</option>
-          <option value="strength">Strength</option>
-          <option value="cardio">Cardio</option>
-          <option value="flexibility">Flexibility</option>
-          <option value="balance">Balance</option>
-        </select>
-      </label>
-      <label>
-        Muscle group
-        <select value={muscleGroup} onChange={onMuscleGroupChange}>
-          <option value="all">All</option>
-          <option value="chest">Chest</option>
-          <option value="back">Back</option>
-          <option value="shoulders">Shoulders</option>
-          <option value="arms">Arms</option>
-          <option value="core">Core</option>
-          <option value="legs">Legs</option>
-        </select>
-      </label>
-      <label>
-        Difficulty
-        <select value={difficulty} onChange={onDifficultyChange}>
-          <option value="all">All</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
-      </label>
-      <button type="button" onClick={onClear}>
-        Clear filters
-      </button>
-    </form>
-  )
-}
+}) => (
+  <form className={styles.filters} onSubmit={(event) => event.preventDefault()}>
+    <label>
+      Category
+      <select value={category} onChange={(event) => onCategoryChange?.(event.target.value)}>
+        <option value="all">All</option>
+        {CATEGORIES.map((item) => (
+          <option key={item} value={item}>
+            {titleCase(item)}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Muscle group
+      <select value={muscleGroup} onChange={(event) => onMuscleGroupChange?.(event.target.value)}>
+        <option value="all">All</option>
+        {MUSCLE_GROUPS.map((item) => (
+          <option key={item} value={item}>
+            {titleCase(item)}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Difficulty
+      <select value={difficulty} onChange={(event) => onDifficultyChange?.(event.target.value)}>
+        <option value="all">All</option>
+        {DIFFICULTIES.map((item) => (
+          <option key={item} value={item}>
+            {titleCase(item)}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Sort
+      <select value={sortBy} onChange={(event) => onSortChange?.(event.target.value)}>
+        <option value="name">Name</option>
+        <option value="difficulty">Difficulty</option>
+        <option value="calories">Calories</option>
+      </select>
+    </label>
+    <button type="button" onClick={onClear}>
+      Clear filters
+    </button>
+  </form>
+)
 
 export default ExerciseFilter

@@ -8,4 +8,5 @@
 .media video,
 .media audio {
   width: 100%;
+  border-radius: var(--radius);
 }

@@ -16,3 +16,14 @@
   gap: 0.5rem;
   margin-bottom: 0.4rem;
 }
+
+.dayList button {
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.dayList button:hover {
+  text-decoration: underline;
+}

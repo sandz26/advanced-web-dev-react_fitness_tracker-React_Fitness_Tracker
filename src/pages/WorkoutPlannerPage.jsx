@@ -1,14 +1,21 @@
 import Header from '../components/common/Header'
 import WorkoutPlanner from '../components/WorkoutPlanner/WorkoutPlanner'
+import { countPlanExercises } from '../utils/helpers'
 
-function WorkoutPlannerPage() {
+function WorkoutPlannerPage({ workoutPlan, onRemoveExercise, onClearDay }) {
+  const total = countPlanExercises(workoutPlan)
+
   return (
     <section className="page">
       <Header
         title="Workout Planner"
-        subtitle="Add exercises to Monday through Sunday. Plan persistence comes next."
+        subtitle={`${total} exercise${total === 1 ? '' : 's'} planned this week.`}
       />
-      <WorkoutPlanner />
+      <WorkoutPlanner
+        plan={workoutPlan}
+        onRemoveExercise={onRemoveExercise}
+        onClearDay={onClearDay}
+      />
     </section>
   )
 }
