@@ -1,5 +1,5 @@
 {
-  "name": "advanced-web-dev-react-fitness-tracker-react-fitness-tracker",
+  "name": "gritline",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "lucide-react": "^1.41.0",
     "prop-types": "^15.8.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

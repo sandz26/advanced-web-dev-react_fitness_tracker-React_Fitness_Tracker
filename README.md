@@ -1,6 +1,6 @@
-# FitTrack
+# Gritline
 
-FitTrack is a React fitness tracker and weekly workout planner. Members search a 24-exercise catalog, watch form demos, add moves to Monday–Sunday, log completed work, and review streak and calorie totals.
+Gritline is a React fitness tracker and weekly workout planner. Members search a 24-exercise catalog, watch form demos, add moves to Monday–Sunday, log completed work, and review streak and calorie totals.
 
 ## Features
 
@@ -34,8 +34,8 @@ Open the printed local URL (usually `http://localhost:5173`).
 
 ## Components
 
-- **Navbar / Footer / Header / Loading** — shell and status
-- **ExerciseCard, ExerciseList, ExerciseFilter, ExerciseDetail** — catalog and form video
+- **Navbar / Footer / Header / Loading, AchievementCard** — shell, status, and milestone cards
+- **ExerciseCard, ExerciseList, ExerciseFilter, ExerciseDetail, ExerciseIcon** — catalog, icons, and form video
 - **WorkoutPlanner, DayCard** — seven-day plan
 - **WorkoutLog, LogEntry, ProgressChart** — history and totals
 - **VideoPlayer, AudioPlayer** — HTML5 media with play/pause
@@ -51,7 +51,7 @@ Open the printed local URL (usually `http://localhost:5173`).
 
 ## Testing strategy
 
-43 tests: component render/props/clicks, integration (navigation and add-then-log), hook persistence, loading/empty/error, async catalog load, and mocked handlers. Vitest + React Testing Library, Jest-style APIs.
+47 tests: component render/props/clicks, integration (navigation and add-then-log), hook persistence, loading/empty/error, async catalog load, and mocked handlers. Vitest + React Testing Library, Jest-style APIs.
 
 ## Test coverage
 
@@ -59,12 +59,12 @@ Latest `npm test -- --coverage` run:
 
 | Metric | Coverage |
 | --- | --- |
-| Statements | 86.52% |
-| Branches | 79.81% |
-| Functions | 82.57% |
-| Lines | 87.26% |
+| Statements | 86.99% |
+| Branches | 77.32% |
+| Functions | 82.83% |
+| Lines | 87.73% |
 
-All 43 tests passed. HTML report: `coverage/index.html`. Screenshot: `screenshots/coverage.png`.
+All 47 tests passed. HTML report: `coverage/index.html`. Screenshot: `screenshots/coverage.png`.
 
 ## Future enhancements
 

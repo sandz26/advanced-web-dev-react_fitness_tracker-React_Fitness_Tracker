@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types'
 import { useMemo } from 'react'
+import AchievementCard from '../components/common/AchievementCard'
 import Header from '../components/common/Header'
 import ProgressChart from '../components/WorkoutLog/ProgressChart'
 import {
@@ -19,6 +21,8 @@ function ProgressPage({ workoutPlan = {}, workoutHistory = [] }) {
     [workoutPlan, workoutHistory],
   )
 
+  const latest = workoutHistory[0]
+
   return (
     <section className="page">
       <Header
@@ -26,7 +30,19 @@ function ProgressPage({ workoutPlan = {}, workoutHistory = [] }) {
         subtitle="Totals update as you plan sessions and log completed work."
       />
       {workoutHistory.length > 0 ? (
-        <ProgressChart totals={totals} />
+        <>
+          <AchievementCard
+            title="Current achievement"
+            badgeText="Achievement"
+            description={
+              latest
+                ? `Logged ${latest.exerciseName} with ${latest.sets} sets × ${latest.reps} reps (${latest.weight} kg)`
+                : 'Keep logging workouts to unlock records'
+            }
+            streakDays={totals.streak || 1}
+          />
+          <ProgressChart totals={totals} />
+        </>
       ) : (
         <p>No workouts logged yet. Start tracking your progress!</p>
       )}
@@ -38,6 +54,11 @@ function ProgressPage({ workoutPlan = {}, workoutHistory = [] }) {
       )}
     </section>
   )
+}
+
+ProgressPage.propTypes = {
+  workoutPlan: PropTypes.object,
+  workoutHistory: PropTypes.array,
 }
 
 export default ProgressPage

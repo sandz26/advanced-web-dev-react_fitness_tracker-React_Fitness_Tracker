@@ -22,8 +22,9 @@ function Navbar() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <NavLink to="/" className={styles.brand} end style={{ letterSpacing: '0.02em' }}>
-          FitTrack
+        <NavLink to="/" className={styles.brand} end aria-label="Gritline">
+          <img src="/gritline-icon.svg" alt="" className={styles.brandIcon} />
+          <span className={styles.brandText}>Grit<span className={styles.brandAccent}>line</span></span>
         </NavLink>
         <button
           type="button"

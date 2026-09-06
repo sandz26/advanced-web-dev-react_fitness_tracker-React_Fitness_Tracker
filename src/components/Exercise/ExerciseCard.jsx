@@ -3,6 +3,7 @@ import Badge from '../UI/Badge'
 import Button from '../UI/Button'
 import Card from '../UI/Card'
 import { formatDuration } from '../../utils/helpers'
+import ExerciseIcon from './ExerciseIcon'
 import styles from './Exercise.module.css'
 
 const ExerciseCard = ({
@@ -16,16 +17,16 @@ const ExerciseCard = ({
   }
 
   return (
-    <Card title={exercise.name} selected={isInPlan}>
-      <img src={exercise.image} alt={exercise.name} className={styles.thumb} />
+    <Card title={exercise.name} selected={isInPlan} className={styles.exerciseCard}>
+      <ExerciseIcon name={exercise.name} size={64} />
       <div className={styles.cardMeta}>
         <Badge label={exercise.category} />
         <Badge label={exercise.difficulty} />
       </div>
-      <p>
-        Duration: {formatDuration(exercise.duration)} · {exercise.sets} sets × {exercise.reps} reps
+      <p className={styles.stats}>
+        {formatDuration(exercise.duration)} · {exercise.sets} sets × {exercise.reps} reps
       </p>
-      <p>{exercise.caloriesBurn} cal</p>
+      <p className={styles.calories}>{exercise.caloriesBurn} cal</p>
       <div className={styles.cardActions}>
         {onSelect ? (
           <Button variant="secondary" onClick={() => onSelect(exercise)}>

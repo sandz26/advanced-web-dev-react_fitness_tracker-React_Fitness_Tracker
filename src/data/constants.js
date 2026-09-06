@@ -31,12 +31,12 @@ export const DIFFICULTY_ORDER = {
 }
 
 export const DIFFICULTY_COLORS = {
-  beginner: '#1f7a4d',
-  intermediate: '#b45309',
-  advanced: '#b42318',
+  beginner: '#1ABC9C',
+  intermediate: '#E67E22',
+  advanced: '#E67E22',
 }
 
 export const STORAGE_KEYS = {
-  plan: 'fittrack-workout-plan',
-  history: 'fittrack-workout-history',
+  plan: 'gritline-workout-plan',
+  history: 'gritline-workout-history',
 }

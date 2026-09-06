@@ -5,6 +5,7 @@ import { renderWithRouter } from '../../test-utils'
 describe('Navbar', () => {
   test('renders links to all app routes', () => {
     renderWithRouter(<Navbar />)
+    expect(screen.getByRole('link', { name: 'Gritline' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Exercises' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Workout Planner' })).toBeInTheDocument()

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { DIFFICULTY_COLORS } from '../../data/constants'
 import { titleCase } from '../../utils/helpers'
@@ -21,6 +22,11 @@ const Badge = ({ label, tone = 'neutral' }) => {
       {titleCase(label)}
     </span>
   )
+}
+
+Badge.propTypes = {
+  label: PropTypes.string.isRequired,
+  tone: PropTypes.string,
 }
 
 export default Badge
