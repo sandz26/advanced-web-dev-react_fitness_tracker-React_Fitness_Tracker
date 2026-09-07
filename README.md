@@ -74,9 +74,8 @@ User accounts, real trainer videos, rest-day suggestions, and exportable weekly 
 
 ![Home](screenshots/home.png)
 ![Exercises](screenshots/exercises.png)
-![Exercise detail](screenshots/exercise-detail.png)
 ![Workout planner](screenshots/planner.png)
 ![History](screenshots/history.png)
 ![Progress](screenshots/progress.png)
 ![Mobile](screenshots/mobile.png)
-![Coverage](screenshots/coverage.png)
+
