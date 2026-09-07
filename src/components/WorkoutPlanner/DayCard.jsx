@@ -4,7 +4,6 @@ import Card from '../UI/Card'
 import styles from './WorkoutPlanner.module.css'
 
 const DayCard = ({ day, exercises = [], onRemoveExercise, onClearDay }) => {
-  // Selected styling tells the user which days already have work assigned.
   const hasExercises = exercises.length > 0
 
   return (

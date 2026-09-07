@@ -9,7 +9,6 @@ const SearchBar = ({
 }) => {
   const [focused, setFocused] = useState(false)
 
-  // Lift the typed query to the parent so sibling filters can use the same text.
   const handleChange = (event) => {
     onChange?.(event.target.value, event)
   }

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+import { X } from 'lucide-react'
 import styles from './UI.module.css'
 
 const Modal = ({ isOpen = false, title, onClose, children }) => {
@@ -19,14 +21,28 @@ const Modal = ({ isOpen = false, title, onClose, children }) => {
       >
         <div className={styles.modalHeader}>
           <h2>{title}</h2>
-          <button type="button" onClick={onClose} aria-label="Close">
-            ×
+          <button
+            type="button"
+            className={styles.closeButton}
+            onClick={onClose}
+            aria-label="Close"
+          >
+            <X size={18} strokeWidth={2.5} />
           </button>
         </div>
-        {children}
+        <div className={styles.modalBody}>
+          {children}
+        </div>
       </div>
     </div>
   )
+}
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  title: PropTypes.string,
+  onClose: PropTypes.func,
+  children: PropTypes.node,
 }
 
 export default Modal

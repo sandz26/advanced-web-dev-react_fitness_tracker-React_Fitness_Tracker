@@ -9,7 +9,6 @@ import { exercisesData } from '../data/exercisesData'
 import { calculateStreak, countPlanExercises } from '../utils/helpers'
 
 function Home({ workoutPlan = {}, workoutHistory = [] }) {
-  // Strength picks are transformed before they reach the featured cards.
   const featured = exercisesData.filter((exercise) => exercise.category === 'strength').slice(0, 3)
   const plannedCount = countPlanExercises(workoutPlan)
   const streak = calculateStreak(workoutHistory)
@@ -58,8 +57,9 @@ function Home({ workoutPlan = {}, workoutHistory = [] }) {
         ))}
       </div>
       <AudioPlayer
-        title="Motivational warmup"
-        description="A short tone to start the session. Replace with a full track later if you like."
+        audioUrl="/assets/audio/shut-up-and-grind.mp3"
+        title="Workout motivation: Shut Up and Grind"
+        description="High-energy motivation track to fuel your workout session."
       />
     </section>
   )

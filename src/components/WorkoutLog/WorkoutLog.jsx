@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import PropTypes from 'prop-types'
 import Button from '../UI/Button'
+import Select from '../UI/Select'
 import LogEntry from './LogEntry'
 import { exercisesData } from '../../data/exercisesData'
 import styles from './WorkoutLog.module.css'
@@ -15,12 +17,20 @@ function WorkoutLog({ entries = [], onSubmit }) {
   })
   const [weightError, setWeightError] = useState('')
 
+  const exerciseOptions = useMemo(
+    () =>
+      exercisesData.map((exercise) => ({
+        value: String(exercise.id),
+        label: exercise.name,
+      })),
+    [],
+  )
+
   const handleChange = (event) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
   }
 
-  // Build a history row from the form so the parent can persist it.
   const handleSubmit = (event) => {
     event.preventDefault()
     const weight = Number(form.weight)
@@ -45,31 +55,32 @@ function WorkoutLog({ entries = [], onSubmit }) {
   return (
     <section className={styles.log}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label>
-          Date
-          <input type="date" name="date" value={form.date} onChange={handleChange} />
-        </label>
-        <label>
-          Exercise
-          <select name="exerciseId" value={form.exerciseId} onChange={handleChange}>
-            {exercisesData.map((exercise) => (
-              <option key={exercise.id} value={exercise.id}>
-                {exercise.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Sets
-          <input type="number" name="sets" min="1" value={form.sets} onChange={handleChange} />
-        </label>
-        <label>
-          Reps
-          <input type="number" name="reps" min="1" value={form.reps} onChange={handleChange} />
-        </label>
-        <label>
-          Weight (kg)
+        <div className={styles.field}>
+          <label htmlFor="log-date">Date</label>
+          <input id="log-date" type="date" name="date" value={form.date} onChange={handleChange} />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="log-exercise">Exercise</label>
+          <Select
+            id="log-exercise"
+            name="exerciseId"
+            value={form.exerciseId}
+            options={exerciseOptions}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="log-sets">Sets</label>
+          <input id="log-sets" type="number" name="sets" min="1" value={form.sets} onChange={handleChange} />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="log-reps">Reps</label>
+          <input id="log-reps" type="number" name="reps" min="1" value={form.reps} onChange={handleChange} />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="log-weight">Weight (kg)</label>
           <input
+            id="log-weight"
             type="number"
             name="weight"
             min="0"
@@ -79,7 +90,7 @@ function WorkoutLog({ entries = [], onSubmit }) {
               setWeightError(Number(form.weight) < 0 ? 'Weight must be 0 or more' : '')
             }}
           />
-        </label>
+        </div>
         {weightError && <p className={styles.error}>{weightError}</p>}
         <Button type="submit">Log Workout</Button>
       </form>
@@ -90,6 +101,11 @@ function WorkoutLog({ entries = [], onSubmit }) {
       )}
     </section>
   )
+}
+
+WorkoutLog.propTypes = {
+  entries: PropTypes.array,
+  onSubmit: PropTypes.func,
 }
 
 export default WorkoutLog

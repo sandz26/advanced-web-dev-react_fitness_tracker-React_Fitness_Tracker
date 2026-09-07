@@ -7,7 +7,6 @@ import { formatDate } from '../utils/helpers'
 function HistoryEntryPage({ workoutHistory = [] }) {
   const { entryId } = useParams()
   const navigate = useNavigate()
-  // Dynamic /history/:entryId lookup; missing ids stay on a friendly fallback.
   const entry = workoutHistory.find((item) => String(item.id) === String(entryId))
 
   if (!entry) {

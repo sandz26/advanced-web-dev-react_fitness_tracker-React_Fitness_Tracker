@@ -11,7 +11,6 @@ const VideoPlayer = ({
   const videoRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  // Keep the custom play button in sync with the native video controls.
   useEffect(() => {
     const node = videoRef.current
     if (!node) {

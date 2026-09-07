@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 0.5rem;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 0.6rem 1.15rem;
   font-family: inherit;
   font-size: 0.925rem;
@@ -30,7 +30,6 @@
   box-shadow: none;
 }
 
-/* Primary actions use --accent-primary (Copper Orange) */
 .primary {
   background: var(--accent-primary);
   color: var(--accent-primary-contrast);
@@ -43,7 +42,6 @@
   box-shadow: 0 2px 8px rgba(230, 126, 34, 0.25);
 }
 
-/* Secondary/outline buttons use --accent-secondary (Dark Navy Slate) */
 .secondary {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -99,9 +97,9 @@
 
 .search input {
   width: min(380px, 100%);
-  padding: 0.6rem 0.95rem;
+  padding: 0.625rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 14px;
   background: var(--surface);
   color: var(--text);
   box-shadow: var(--shadow-sm);
@@ -121,8 +119,8 @@
 
 .search button {
   border: 1px solid var(--accent-primary);
-  border-radius: 10px;
-  padding: 0.6rem 1.15rem;
+  border-radius: 14px;
+  padding: 0.625rem 1.25rem;
   background: var(--accent-primary);
   color: var(--accent-primary-contrast);
   font-weight: 500;
@@ -147,25 +145,56 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: grid;
   place-items: center;
   padding: 1.25rem;
   z-index: 50;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal {
-  width: min(520px, 100%);
+  width: min(480px, 100%);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 1.75rem;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.22), 0 9px 46px 8px rgba(0, 0, 0, 0.15);
   color: var(--text);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  animation: modalScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal button:not(.closeButton) {
+  width: 100%;
+  border-radius: 14px;
+  height: 44px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modalHeader {
@@ -173,13 +202,44 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.85rem;
 }
 
+.modalHeader h2,
 .modalHeader h3 {
   color: var(--accent-secondary);
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.closeButton {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.closeButton:hover {
+  background: var(--accent-soft);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .badge {
@@ -195,13 +255,11 @@
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-/* Secondary/neutral badge: navy slate on subtle background */
 .neutral {
   background: rgba(44, 62, 80, 0.08);
   color: var(--accent-secondary);
 }
 
-/* Mint Teal highlight badge */
 .highlight {
   background: var(--highlight);
   color: var(--highlight-contrast);

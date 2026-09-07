@@ -3,15 +3,21 @@ import PropTypes from 'prop-types'
 import Button from '../UI/Button'
 import styles from './Media.module.css'
 
+const getAudioType = (url = '') => {
+  if (url.endsWith('.mp3')) return 'audio/mpeg'
+  if (url.endsWith('.wav')) return 'audio/wav'
+  if (url.endsWith('.ogg')) return 'audio/ogg'
+  return undefined
+}
+
 const AudioPlayer = ({
-  audioUrl = '/assets/audio/motivation.wav',
-  title = 'Workout motivation',
+  audioUrl = '/assets/audio/shut-up-and-grind.mp3',
+  title = 'Workout motivation: Shut Up and Grind',
   description = '',
 }) => {
   const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  // Mirror native audio events so the label can switch between play and pause.
   useEffect(() => {
     const node = audioRef.current
     if (!node) {
@@ -45,8 +51,8 @@ const AudioPlayer = ({
     <figure className={styles.media}>
       <h4>{title}</h4>
       {description ? <p>{description}</p> : null}
-      <audio ref={audioRef} controls>
-        <source src={audioUrl} type="audio/wav" />
+      <audio ref={audioRef} controls src={audioUrl}>
+        <source src={audioUrl} type={getAudioType(audioUrl)} />
         Your browser does not support the audio element.
       </audio>
       <Button variant="secondary" onClick={togglePlayback}>

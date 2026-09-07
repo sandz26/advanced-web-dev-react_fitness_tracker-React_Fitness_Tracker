@@ -4,7 +4,6 @@ import Card from '../UI/Card'
 import { formatDate } from '../../utils/helpers'
 
 const LogEntry = ({ entry }) => {
-  // Skip broken rows so a partial localStorage payload cannot crash the list.
   if (!entry) {
     return null
   }

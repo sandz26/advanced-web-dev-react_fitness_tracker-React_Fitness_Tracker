@@ -6,8 +6,10 @@ import ExerciseList from '../components/Exercise/ExerciseList'
 import Button from '../components/UI/Button'
 import Modal from '../components/UI/Modal'
 import SearchBar from '../components/UI/SearchBar'
+import Select from '../components/UI/Select'
 import { DAYS } from '../data/constants'
 import { filterExercises, loadCatalog, sortExercises } from '../utils/helpers'
+import styles from '../components/Exercise/Exercise.module.css'
 
 function ExercisesPage({ workoutPlan = {}, onAddToPlan }) {
   const navigate = useNavigate()
@@ -22,7 +24,6 @@ function ExercisesPage({ workoutPlan = {}, onAddToPlan }) {
   const [pendingExercise, setPendingExercise] = useState(null)
   const [selectedDay, setSelectedDay] = useState('Monday')
 
-  // Simulated catalog fetch keeps loading / empty / error states testable.
   useEffect(() => {
     let active = true
     loadCatalog()
@@ -48,7 +49,6 @@ function ExercisesPage({ workoutPlan = {}, onAddToPlan }) {
     }
   }, [])
 
-  // Filter in the page, then pass the already-narrowed list to ExerciseList.
   const visibleExercises = useMemo(
     () =>
       sortExercises(
@@ -65,6 +65,11 @@ function ExercisesPage({ workoutPlan = {}, onAddToPlan }) {
     setDifficulty('all')
     setSortBy('name')
   }
+
+  const dayOptions = useMemo(
+    () => DAYS.map((day) => ({ value: day, label: day })),
+    [],
+  )
 
   return (
     <section className="page">
@@ -98,16 +103,15 @@ function ExercisesPage({ workoutPlan = {}, onAddToPlan }) {
           isOpen
           onClose={() => setPendingExercise(null)}
         >
-          <label>
-            Choose a day
-            <select value={selectedDay} onChange={(event) => setSelectedDay(event.target.value)}>
-              {DAYS.map((day) => (
-                <option key={day} value={day}>
-                  {day}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className={styles.modalContent}>
+            <label htmlFor="modal-day-select">Choose a day</label>
+            <Select
+              id="modal-day-select"
+              value={selectedDay}
+              options={dayOptions}
+              onChange={(event) => setSelectedDay(event.target.value)}
+            />
+          </div>
           <Button
             onClick={() => {
               onAddToPlan?.(selectedDay, pendingExercise)

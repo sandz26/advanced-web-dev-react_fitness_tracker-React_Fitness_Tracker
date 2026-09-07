@@ -78,7 +78,7 @@
 }
 
 .link {
-  color: var(--text-muted); /* Inactive uses muted gray */
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.925rem;
   font-weight: 500;
@@ -94,7 +94,6 @@
   text-decoration: none;
 }
 
-/* Active tab uses --accent-primary as underline and subtle background */
 .active {
   color: var(--accent-primary);
   font-weight: 600;

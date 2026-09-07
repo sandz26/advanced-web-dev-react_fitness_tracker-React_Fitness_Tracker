@@ -32,7 +32,6 @@ const ExerciseList = ({
           onSelect={onSelect}
           onAdd={onAdd}
           isInPlan={Object.values(workoutPlan).some((day) =>
-            // An exercise is "in plan" if any weekday already contains its id.
             day.some((item) => item.id === exercise.id),
           )}
         />

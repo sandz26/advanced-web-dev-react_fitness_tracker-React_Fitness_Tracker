@@ -14,7 +14,6 @@ export const formatDuration = (minutes) => `${minutes} min`
 export const titleCase = (value = '') =>
   value.charAt(0).toUpperCase() + value.slice(1)
 
-// Narrow the catalog by search text plus the three filter dropdowns.
 export const filterExercises = (
   exercises,
   { query = '', category = 'all', muscleGroup = 'all', difficulty = 'all' } = {},
@@ -32,7 +31,6 @@ export const filterExercises = (
   })
 }
 
-// Sorting happens after filtering so the list order never fights the search box.
 export const sortExercises = (exercises, sortBy = 'name') => {
   const copy = [...exercises]
 
@@ -72,7 +70,6 @@ export const toDateKey = (value) => {
   return `${year}-${month}-${day}`
 }
 
-// Count consecutive calendar days with a log, starting from today or yesterday.
 export const calculateStreak = (history = [], today = new Date()) => {
   const uniqueDays = new Set(
     history.map((entry) => toDateKey(entry.date)).filter(Boolean),
@@ -104,7 +101,6 @@ export const calculateStreak = (history = [], today = new Date()) => {
   return streak
 }
 
-// Simulated fetch so pages can show a loading state before the catalog appears.
 export const loadCatalog = () =>
   new Promise((resolve) => {
     setTimeout(() => resolve(exercisesData), 40)

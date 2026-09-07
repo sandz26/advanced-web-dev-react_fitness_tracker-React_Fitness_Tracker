@@ -6,7 +6,6 @@ import styles from './UI.module.css'
 
 const Badge = ({ label, tone = 'neutral' }) => {
   const [hovered, setHovered] = useState(false)
-  // Difficulty labels get a tinted chip; other labels keep the CSS module tone.
   const difficultyColor = DIFFICULTY_COLORS[label]
   const inlineStyle = difficultyColor
     ? { backgroundColor: hovered ? difficultyColor : `${difficultyColor}22`, color: difficultyColor }

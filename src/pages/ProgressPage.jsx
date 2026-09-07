@@ -10,7 +10,6 @@ import {
 } from '../utils/helpers'
 
 function ProgressPage({ workoutPlan = {}, workoutHistory = [] }) {
-  // Derive chart values here so Home/History siblings do not recompute independently.
   const totals = useMemo(
     () => ({
       workouts: workoutHistory.length,

@@ -1,7 +1,3 @@
-// ExerciseIcon.jsx
-// Drop-in replacement for a photo <img> on your exercise cards.
-// Usage: <ExerciseIcon name="Bench Press" size={48} />
-
 import PropTypes from 'prop-types'
 import { EXERCISE_ICON_MAP, CATEGORY_COLORS, DEFAULT_ICON } from './exerciseIcons'
 
@@ -20,7 +16,7 @@ export default function ExerciseIcon({ name, size = 48, className = '' }) {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: '12px',
-        backgroundColor: `${color}1a`, // ~10% opacity tint of the category color
+        backgroundColor: `${color}1a`,
         marginBottom: '0.75rem',
       }}
       aria-label={name}

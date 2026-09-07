@@ -12,6 +12,7 @@ export const exercisesData = [
     reps: 15,
     image: '/assets/images/push-ups.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Start in a plank position with hands shoulder-width apart',
       'Lower your body until chest nearly touches the floor',
@@ -32,6 +33,7 @@ export const exercisesData = [
     reps: 12,
     image: '/assets/images/squats.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Stand with feet shoulder-width apart',
       'Bend knees and hips as if sitting into a chair',
@@ -52,6 +54,7 @@ export const exercisesData = [
     reps: 30,
     image: '/assets/images/plank.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Place forearms on the floor with elbows under shoulders',
       'Extend legs and keep a straight line from head to heels',
@@ -72,6 +75,7 @@ export const exercisesData = [
     reps: 10,
     image: '/assets/images/lunges.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Step one foot forward and lower the back knee',
       'Keep the front knee above the ankle',
@@ -92,6 +96,7 @@ export const exercisesData = [
     reps: 8,
     image: '/assets/images/pull-ups.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Hang from a bar with palms facing away',
       'Pull the chest toward the bar',
@@ -112,6 +117,7 @@ export const exercisesData = [
     reps: 10,
     image: '/assets/images/dumbbell-rows.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Hinge forward with a flat back',
       'Pull the dumbbell toward the hip',
@@ -132,6 +138,7 @@ export const exercisesData = [
     reps: 6,
     image: '/assets/images/deadlift.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Stand with the bar over mid-foot',
       'Hinge, grip the bar, and brace the core',
@@ -152,6 +159,7 @@ export const exercisesData = [
     reps: 6,
     image: '/assets/images/bench-press.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Lie on a bench with eyes under the bar',
       'Unrack and lower the bar to mid-chest',
@@ -172,6 +180,7 @@ export const exercisesData = [
     reps: 6,
     image: '/assets/images/overhead-press.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Hold the bar at shoulder height',
       'Brace the core and press overhead',
@@ -192,6 +201,7 @@ export const exercisesData = [
     reps: 30,
     image: '/assets/images/jumping-jacks.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Start with feet together and arms at sides',
       'Jump the feet out while raising the arms',
@@ -212,6 +222,7 @@ export const exercisesData = [
     reps: 40,
     image: '/assets/images/high-knees.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Jog in place lifting knees to hip height',
       'Pump the opposite arm with each knee',
@@ -232,6 +243,7 @@ export const exercisesData = [
     reps: 20,
     image: '/assets/images/mountain-climbers.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Start in a high plank',
       'Drive one knee toward the chest',
@@ -252,6 +264,7 @@ export const exercisesData = [
     reps: 12,
     image: '/assets/images/burpees.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Squat down and place hands on the floor',
       'Jump the feet back to a plank',
@@ -272,6 +285,7 @@ export const exercisesData = [
     reps: 50,
     image: '/assets/images/jump-rope.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Hold the handles at hip height',
       'Turn the rope with the wrists',
@@ -292,6 +306,7 @@ export const exercisesData = [
     reps: 1,
     image: '/assets/images/running-intervals.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Warm up with an easy jog',
       'Sprint for 30 to 45 seconds',
@@ -312,6 +327,7 @@ export const exercisesData = [
     reps: 1,
     image: '/assets/images/cycling-sprints.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Start with a steady cadence',
       'Increase resistance and sprint',
@@ -332,6 +348,7 @@ export const exercisesData = [
     reps: 5,
     image: '/assets/images/downward-dog.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'From hands and knees, tuck the toes',
       'Lift the hips into an inverted V',
@@ -352,6 +369,7 @@ export const exercisesData = [
     reps: 4,
     image: '/assets/images/hamstring-stretch.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Sit with one leg extended',
       'Hinge forward from the hips',
@@ -372,6 +390,7 @@ export const exercisesData = [
     reps: 10,
     image: '/assets/images/cat-cow.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Start on hands and knees',
       'Inhale and drop the belly for cow',
@@ -392,6 +411,7 @@ export const exercisesData = [
     reps: 3,
     image: '/assets/images/childs-pose.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Kneel and sit the hips toward the heels',
       'Fold the torso forward',
@@ -412,6 +432,7 @@ export const exercisesData = [
     reps: 6,
     image: '/assets/images/shoulder-stretch.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Bring one arm across the chest',
       'Use the other arm to support it',
@@ -432,6 +453,7 @@ export const exercisesData = [
     reps: 20,
     image: '/assets/images/single-leg-stand.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Stand tall and shift weight onto one foot',
       'Lift the other foot slightly',
@@ -452,6 +474,7 @@ export const exercisesData = [
     reps: 20,
     image: '/assets/images/tree-pose.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Place one foot on the inner calf or thigh',
       'Avoid pressing on the knee joint',
@@ -472,6 +495,7 @@ export const exercisesData = [
     reps: 8,
     image: '/assets/images/bosu-squats.svg',
     videoUrl: demoVideo,
+    demoOverride: { demoUrl: '', type: '' },
     instructions: [
       'Stand on the dome of a Bosu ball',
       'Find a stable stance before squatting',

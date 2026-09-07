@@ -16,36 +16,43 @@
   box-shadow: var(--shadow);
 }
 
-.form label {
+.field {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+}
+
+.field label {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent-secondary);
 }
 
-.form input,
-.form select {
-  padding: 0.55rem 0.85rem;
+.form input {
+  padding: 0.625rem 0.95rem;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 14px;
   background: var(--surface);
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 0.925rem;
   box-shadow: var(--shadow-sm);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.form input:focus,
-.form select:focus {
+.form input:focus {
   outline: none;
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px var(--accent-soft);
 }
 
+.form select {
+  width: 100%;
+  border-radius: 14px;
+}
+
 .form button[type="submit"] {
-  height: 40px;
+  height: 44px;
+  border-radius: 14px;
 }
 
 .error {

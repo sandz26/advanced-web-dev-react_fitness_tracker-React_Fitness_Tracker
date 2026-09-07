@@ -17,7 +17,6 @@ function App() {
   const [workoutPlan, setWorkoutPlan] = useLocalStorage(STORAGE_KEYS.plan, EMPTY_PLAN)
   const [workoutHistory, setWorkoutHistory] = useLocalStorage(STORAGE_KEYS.history, [])
 
-  // Shared planner mutations live here so Exercises, Detail, and Planner stay in sync.
   const handleAddToPlan = (day, exercise) => {
     setWorkoutPlan((current) => {
       const dayItems = current[day] ?? []

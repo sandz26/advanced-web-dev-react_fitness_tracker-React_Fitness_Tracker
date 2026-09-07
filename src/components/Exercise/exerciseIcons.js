@@ -1,9 +1,3 @@
-// exerciseIcons.js
-// Maps each exercise name to a lucide-react icon component + a category color.
-// No network calls, no API keys — icons ship with the lucide-react package.
-//
-// npm install lucide-react
-
 import {
   Dumbbell,
   Flame,
@@ -29,15 +23,13 @@ import {
   StretchVertical,
 } from 'lucide-react'
 
-// Category -> color (used for icon tint + badge accents)
 export const CATEGORY_COLORS = {
-  Strength: '#E67E22', // Copper Orange
-  Cardio: '#ea580c', // Earthy rust orange
-  Flexibility: '#1ABC9C', // Mint Teal
-  Balance: '#7c3aed', // Purple accent
+  Strength: '#E67E22',
+  Cardio: '#ea580c',
+  Flexibility: '#1ABC9C',
+  Balance: '#7c3aed',
 }
 
-// Exercise name -> { icon, category }
 export const EXERCISE_ICON_MAP = {
   'Bench Press': { icon: Dumbbell, category: 'Strength' },
   'Bosu Squats': { icon: Scale, category: 'Balance' },
@@ -65,5 +57,4 @@ export const EXERCISE_ICON_MAP = {
   'Tree Pose': { icon: Waves, category: 'Balance' },
 }
 
-// Fallback icon if an exercise name isn't in the map (e.g. new items added later)
 export const DEFAULT_ICON = Dumbbell
